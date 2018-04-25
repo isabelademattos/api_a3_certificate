@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sage XML - Hackaton</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<applet name="SageXMLHackaton" code="br.sage.hackaton.SageXMLApplet.class" archive="SageXMLHackaton.jar"></applet>
+</head>
+<body>
+	<div class='container'>
+		<div class='row'>
+			<div class="col-sm-6 offset-sm-3 mt-5">
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<h4>Arquivo XML a ser enviado</h4>
+					</div>		
+				</div>
+				<div class="row">
+					<div class="col-sm-12 mt-2">
+						<textarea id="xml" cols="80" rows="10" class='form-control'></textarea>		
+					</div>		
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12 mt-2">
+						<button class='btn btn-success' onclick="signXML()">Assinar XML</button>
+					</div>		
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12 mt-2" id='xmlResponse'>
+						
+					</div>		
+				</div>	
+
+
+			</div>
+		</div>
+	</div>
+	<script src="https://www.java.com/js/deployJava.js"></script>
+</body>
+
+<script type="text/javascript">
+	function signXML(){		
+		var applet = document.applets['SageXMLHackaton'];		
+		var parameter = document.getElementById('xml'); 
+		console.log(parameter);
+		console.log(applet.signXML(parameter));
+
+		applet.getResponse()
+	}
+</script>
+
+</html>
