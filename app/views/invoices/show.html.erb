@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>xml_original:</strong>
+  <%= @invoice.xml_original %>
+</p>
+
+<p>
+  <strong>xml_signed:</strong>
+  <%= @invoice.xml_signed %>
+</p>
+
+<%= link_to edit_invoice_path(@invoice), class: 'btn btn-info' do %> Edit
+<% end %>
+<%= link_to invoices_path, class: 'btn btn-info' do %> Back
+<% end %>

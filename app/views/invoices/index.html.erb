@@ -1,0 +1,42 @@
+<applet name="SageXMLHackaton" code="br.sage.hackaton.SageXMLApplet.class" archive="SageXMLHackaton.jar"></applet>
+<script src="https://www.java.com/js/deployJava.js"></script>
+<script type="text/javascript">
+  function signXML(){
+    var applet = document.applets['SageXMLHackaton'];
+    console.log(applet.signXML(document.getElementById('xml')));
+  }
+</script>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Invoices</h1>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><%= link_to 'List', invoices_path %></li>
+</ul>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>xml_original</th>
+      <th>xml_signed</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= invoice.xml_original %></td>
+        <td><%= invoice.xml_signed %></td>
+        <td><%= button_tag 'Sign', class: 'btn btn-info btn-xs', onclick: 'signXML()' %></td>
+        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to new_invoice_path, class: 'btn btn-info' do %> New Invoice
+<% end %>
+
